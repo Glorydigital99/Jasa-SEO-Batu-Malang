@@ -1,0 +1,8 @@
+{
+  "name": "GLORY DIGITAL - Agensi SEO",
+  "description": "Halaman arahan agensi SEO berperforma tinggi dengan fitur audit SEO berbasis AI.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
