@@ -40,7 +40,6 @@ const SuccessShowcase: React.FC = () => {
   return (
     <section className="py-24 space-y-16">
       <div className="text-center space-y-4">
-        <h2 className="text-sm font-black text-primary uppercase tracking-[0.4em]">Proven Results</h2>
         <h3 className="text-4xl md:text-6xl font-black text-white tracking-tighter">Hasil Nyata, <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">Bukan Janji.</span></h3>
         <p className="text-gray-400 max-w-2xl mx-auto">Lihat bagaimana strategi presisi kami mengubah angka statistik menjadi pertumbuhan bisnis yang nyata bagi klien kami.</p>
       </div>
