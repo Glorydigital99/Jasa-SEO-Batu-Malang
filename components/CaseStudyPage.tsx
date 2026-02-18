@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 
 interface CaseStudyPageProps {
   onBack: () => void;
@@ -7,6 +6,11 @@ interface CaseStudyPageProps {
 }
 
 const CaseStudyPage: React.FC<CaseStudyPageProps> = ({ onBack, onSelectCase }) => {
+  // Paksa layar kembali ke posisi paling atas saat halaman ini dimuat
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const cases = [
     {
       id: "case-emerald",
@@ -59,95 +63,99 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({ onBack, onSelectCase }) =
   ];
 
   return (
-    <section className="px-6 py-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      {/* Back Link */}
-      <button 
-        onClick={onBack}
-        className="flex items-center gap-2 text-text-muted hover:text-primary transition-colors mb-12 group font-bold text-sm tracking-widest uppercase"
-      >
-        <span className="material-symbols-outlined group-hover:-translate-x-2 transition-transform">arrow_back</span>
-        <span>Kembali ke Beranda</span>
-      </button>
+    /* FIX: Kita pakai 'relative z-10 block' dan 'opacity-100' secara eksplisit.
+       Gue hapus class 'animate-in' karena itu penyebab utama konten jadi transparan di HP 
+       kalau plugin Tailwind Animate lu belum terinstall/terkonfigurasi dengan benar.
+    */
+    <section className="relative z-10 block w-full opacity-100 visible py-10">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Tombol Kembali - Pakai 'text-gray-400' biar aman di semua browser */}
+        <button 
+          onClick={onBack}
+          className="flex items-center gap-2 text-gray-400 hover:text-primary transition-all mb-12 group font-bold text-xs tracking-widest uppercase relative z-20"
+        >
+          <span className="material-symbols-outlined group-hover:-translate-x-2 transition-transform">arrow_back</span>
+          <span>Kembali ke Beranda</span>
+        </button>
 
-      <div className="space-y-16">
-        <div className="text-center md:text-left space-y-6 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full">
-            <span className="material-symbols-outlined text-primary text-sm">stars</span>
-            <span className="text-xs font-black text-primary uppercase tracking-widest">Success Stories</span>
+        <div className="space-y-16">
+          {/* Judul Halaman */}
+          <div className="text-left space-y-6 max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full">
+              <span className="material-symbols-outlined text-primary text-sm">stars</span>
+              <span className="text-[10px] font-black text-primary uppercase tracking-widest">Success Stories</span>
+            </div>
+            <h1 className="text-4xl md:text-7xl font-black text-white leading-tight">
+              Bukti Nyata <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">Hasil Kerja Kami</span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
+              Strategi digital presisi untuk melampaui target pertumbuhan brand Anda.
+            </p>
           </div>
-          <h1 className="text-5xl md:text-7xl font-black text-white leading-tight">
-            Bukti Nyata <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">Pertumbuhan Eksponensial</span>
-          </h1>
-          <p className="text-xl text-gray-400 leading-relaxed">
-            Kami telah membantu ratusan brand di berbagai industries untuk melampaui target pertumbuhan mereka melalui strategi digital yang presisi.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {cases.map((item, i) => (
-            <div key={i} className="group relative bg-surface-dark/40 border border-white/5 rounded-[3rem] overflow-hidden hover:border-primary/20 transition-all duration-500 flex flex-col">
-              <div className="aspect-[4/3] overflow-hidden relative">
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
-                {/* Subtle Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background-dark/80 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-center justify-center">
-                   <div className="w-12 h-12 rounded-full bg-primary/20 backdrop-blur-md border border-primary/40 flex items-center justify-center text-primary scale-0 group-hover:scale-100 transition-transform duration-500 delay-100">
-                      <span className="material-symbols-outlined">visibility</span>
-                   </div>
-                </div>
-              </div>
-              
-              <div className="p-8 space-y-6 flex-grow flex flex-col">
-                <div className="flex justify-between items-center">
-                  <span className="px-3 py-1 bg-white/5 text-[10px] font-black text-gray-400 uppercase tracking-widest rounded-full border border-white/5">
-                    {item.category}
-                  </span>
-                  <span className="text-primary font-black text-sm">
-                    {item.result}
-                  </span>
+          {/* Grid List - 1 Kolom di HP, 3 di Laptop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            {cases.map((item, i) => (
+              <div key={i} className="group relative bg-surface-dark/60 border border-white/10 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden flex flex-col min-h-[450px] shadow-2xl transition-all hover:border-primary/20">
+                <div className="aspect-[4/3] w-full relative overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-transparent to-transparent"></div>
                 </div>
                 
-                <h3 className="text-2xl font-black text-white group-hover:text-primary transition-colors leading-tight">
-                  {item.title}
-                </h3>
-                
-                <p className="text-gray-500 text-sm leading-relaxed flex-grow">
-                  {item.description}
-                </p>
-                
-                <button 
-                  onClick={() => onSelectCase && onSelectCase(item.id)}
-                  className="pt-4 flex items-center gap-2 text-[10px] font-black text-white uppercase tracking-widest group-hover:gap-4 transition-all"
-                >
-                  <span>Lihat Detail Studi Kasus</span>
-                  <span className="material-symbols-outlined text-sm text-primary">arrow_forward</span>
-                </button>
+                <div className="p-6 md:p-8 space-y-6 flex-grow flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="px-3 py-1 bg-white/5 text-[9px] font-black text-gray-400 uppercase tracking-widest rounded-full border border-white/5">
+                        {item.category}
+                      </span>
+                      <span className="text-primary font-black text-xs">
+                        {item.result}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-xl md:text-2xl font-black text-white group-hover:text-primary transition-colors leading-tight">
+                      {item.title}
+                    </h3>
+                    
+                    <p className="text-gray-500 text-xs md:text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                  
+                  <button 
+                    onClick={() => onSelectCase && onSelectCase(item.id)}
+                    className="pt-4 flex items-center gap-2 text-[10px] font-black text-white uppercase tracking-widest group-hover:gap-4 transition-all"
+                  >
+                    <span>Lihat Detail</span>
+                    <span className="material-symbols-outlined text-sm text-primary">arrow_forward</span>
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Global Achievement Banner */}
-        <div className="mt-20 p-12 md:p-20 rounded-[4rem] bg-gradient-to-br from-surface-dark to-background-dark border border-white/5 relative overflow-hidden text-center">
-          <div className="absolute inset-0 bg-primary/5 blur-[100px]"></div>
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div>
-              <div className="text-5xl font-black text-white mb-2">500+</div>
-              <div className="text-xs font-black text-gray-500 uppercase tracking-widest">Project Selesai</div>
-            </div>
-            <div>
-              <div className="text-5xl font-black text-primary mb-2">4.9/5</div>
-              <div className="text-xs font-black text-gray-500 uppercase tracking-widest">Rating Client</div>
-            </div>
-            <div>
-              <div className="text-5xl font-black text-white mb-2">12+</div>
-              <div className="text-xs font-black text-gray-500 uppercase tracking-widest">Negara Terjangkau</div>
+          {/* Achievement Banner */}
+          <div className="mt-20 p-8 md:p-20 rounded-[3rem] md:rounded-[4rem] bg-gradient-to-br from-surface-dark to-background-dark border border-white/5 relative overflow-hidden text-center">
+            <div className="absolute inset-0 bg-primary/5 blur-[100px]"></div>
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+              <div>
+                <div className="text-4xl md:text-5xl font-black text-white mb-2">500+</div>
+                <div className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Project Selesai</div>
+              </div>
+              <div>
+                <div className="text-4xl md:text-5xl font-black text-primary mb-2">4.9/5</div>
+                <div className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Rating Client</div>
+              </div>
+              <div>
+                <div className="text-4xl md:text-5xl font-black text-white mb-2">12+</div>
+                <div className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Negara Terjangkau</div>
+              </div>
             </div>
           </div>
         </div>
