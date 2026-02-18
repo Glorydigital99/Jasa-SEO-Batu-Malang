@@ -1,64 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Halaman Utama -->
   <url>
-    <loc>https://glorydigital.agency/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <loc>https://zendigital0.github.io/GLORY-DIGITAL1/</loc>
+    <lastmod>2026-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Layanan Utama -->
   <url>
-    <loc>https://glorydigital.agency/all-services</loc>
-    <lastmod>2026-01-01</lastmod>
+    <loc>https://zendigital0.github.io/GLORY-DIGITAL1/all-services</loc>
+    <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://glorydigital.agency/service-web</loc>
-    <lastmod>2026-01-01</lastmod>
+    <loc>https://zendigital0.github.io/GLORY-DIGITAL1/service-web</loc>
+    <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://glorydigital.agency/audit-improvement</loc>
-    <lastmod>2026-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://glorydigital.agency/design-grafis</loc>
-    <lastmod>2026-01-01</lastmod>
+    <loc>https://zendigital0.github.io/GLORY-DIGITAL1/audit-improvement</loc>
+    <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Studi Kasus -->
   <url>
-    <loc>https://glorydigital.agency/case-study</loc>
-    <lastmod>2026-01-01</lastmod>
+    <loc>https://zendigital0.github.io/GLORY-DIGITAL1/case-study</loc>
+    <lastmod>2026-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Halaman Informasi & Legal -->
   <url>
-    <loc>https://glorydigital.agency/about</loc>
-    <lastmod>2026-01-01</lastmod>
+    <loc>https://zendigital0.github.io/GLORY-DIGITAL1/about</loc>
+    <lastmod>2026-02-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://glorydigital.agency/privacy</loc>
-    <lastmod>2026-01-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://glorydigital.agency/terms</loc>
-    <lastmod>2026-01-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
 </urlset>
