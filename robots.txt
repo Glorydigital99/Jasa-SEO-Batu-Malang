@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-# Sitemaps
-Sitemap: https://zendigital0.github.io/GLORY-DIGITAL1/sitemap.xml
