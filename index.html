@@ -2,6 +2,26 @@
 <!DOCTYPE html>
 <html lang="id" class="dark">
   <head>
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, l.pathname.length - 1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-686LBKQTSP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-686LBKQTSP');
+</script>
     <meta name="google-site-verification" content="37n6eLKAf2wlTgOj7nWVS0hzK572zYcAM6Og1wMCrL4" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
