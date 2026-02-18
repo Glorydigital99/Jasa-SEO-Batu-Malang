@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://glorydigital.agency/sitemap.xml
+Sitemap: https://zendigital0.github.io/GLORY-DIGITAL1/sitemap.xml
