@@ -112,9 +112,9 @@ const AuditImprovementPage: React.FC<AuditImprovementPageProps> = ({ onBack }) =
               </div>
               <div className="pt-4 border-t border-white/5">
                 <p className="text-[10px] text-emerald-400/70 font-mono">
-                  > Analyzed 1,420 pages...<br />
-                  > Detected 14 critical errors in sitemap...<br />
-                  > Canonical tags missing on blog pages...
+                  &gt; Analyzed 1,420 pages...<br />
+                  &gt; Detected 14 critical errors in sitemap...<br />
+                  &gt; Canonical tags missing on blog pages...
                 </p>
               </div>
             </div>
