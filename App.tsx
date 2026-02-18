@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -87,14 +86,18 @@ const App: React.FC = () => {
             <div className="space-y-24 px-4 md:px-8">
               <Stats />
               <SuccessShowcase />
+              
+              {/* --- BAGIAN YANG GUE FIX --- */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                <div className="lg:col-span-7">
+                <div className="lg:col-span-7 min-h-[500px]"> {/* Booking tempat agar tidak error width(-1) */}
                   <GrowthChart />
                 </div>
                 <div className="lg:col-span-5">
                   <Services onNavigate={navigateTo as any} />
                 </div>
               </div>
+              {/* ------------------------- */}
+
               <DetailedServices />
               <AuditForm onSuccess={() => navigateTo('confirmation')} />
               <Testimonials />
@@ -102,86 +105,67 @@ const App: React.FC = () => {
           </>
         )}
 
+        {/* --- All Other Pages Rendering --- */}
         {currentPage === 'all-services' && (
           <AllServicesPage onBack={() => navigateTo('home')} onNavigate={navigateTo as any} />
         )}
-
         {currentPage === 'service-web' && (
           <ServiceWebPage onBack={() => navigateTo('home')} />
         )}
-
         {currentPage === 'audit-improvement' && (
           <AuditImprovementPage onBack={() => navigateTo('home')} />
         )}
-
         {currentPage === 'design-grafis' && (
           <GraphicDesignPage onBack={() => navigateTo('home')} />
         )}
-
         {currentPage === 'redesign-web' && (
           <RedesignWebPage onBack={() => navigateTo('home')} />
         )}
-
         {currentPage === 'google-ads' && (
           <GoogleAdsPage onBack={() => navigateTo('all-services')} />
         )}
-
         {currentPage === 'content-writing' && (
           <ContentWritingPage onBack={() => navigateTo('all-services')} />
         )}
-
         {currentPage === 'social-media' && (
           <SocialMediaPage onBack={() => navigateTo('all-services')} />
         )}
-
         {currentPage === 'branding' && (
           <BrandingStrategyPage onBack={() => navigateTo('all-services')} />
         )}
-
         {currentPage === 'confirmation' && (
           <ConfirmationPage onBack={() => navigateTo('home')} />
         )}
-
         {currentPage === 'case-study' && (
           <CaseStudyPage onBack={() => navigateTo('home')} onSelectCase={(id) => navigateTo(id as Page)} />
         )}
-
         {currentPage === 'case-emerald' && (
           <CaseStudyEmeraldPage onBack={() => navigateTo('case-study')} />
         )}
-
         {currentPage === 'case-techflow' && (
           <CaseStudyTechFlowPage onBack={() => navigateTo('case-study')} />
         )}
-
         {currentPage === 'case-urban' && (
           <CaseStudyUrbanPage onBack={() => navigateTo('case-study')} />
         )}
-
         {currentPage === 'case-luxe' && (
           <CaseStudyLuxePage onBack={() => navigateTo('case-study')} />
         )}
-
         {currentPage === 'case-health' && (
           <CaseStudyHealthPage onBack={() => navigateTo('case-study')} />
         )}
-
         {currentPage === 'case-eco' && (
           <CaseStudyEcoPage onBack={() => navigateTo('case-study')} />
         )}
-
         {currentPage === 'process' && (
           <ProcessPage onBack={() => navigateTo('home')} />
         )}
-
         {currentPage === 'about' && (
           <AboutPage onBack={() => navigateTo('home')} />
         )}
-
         {currentPage === 'privacy' && (
           <PrivacyPage onBack={() => navigateTo('home')} />
         )}
-
         {currentPage === 'terms' && (
           <TermsPage onBack={() => navigateTo('home')} />
         )}

@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  /* Warna Branding Glory Digital */
+  --color-primary: #13ec5b;
+  --color-background-dark: #102216;
+  --color-surface-dark: #193322;
+  --color-surface-darker: #0a160e;
+  --color-text-muted: #92c9a4;
+
+  /* Font Configuration */
+  --font-sans: "Inter", ui-sans-serif, system-ui;
+  --font-serif: "Playfair Display", ui-serif, Georgia;
+}
+
+/* Custom CSS lu yang tadi di index.html pindahin ke sini juga biar rapi */
+body {
+  background-color: var(--color-background-dark);
+  color: white;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

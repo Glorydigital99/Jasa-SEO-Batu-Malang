@@ -21,9 +21,3 @@ export interface Metric {
   change: string;
   icon: string;
 }
-
-export interface AuditResult {
-  analysis: string;
-  recommendations: string[];
-  score: number;
-}

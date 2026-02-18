@@ -38,7 +38,7 @@ const RedesignWebPage: React.FC<RedesignWebPageProps> = ({ onBack }) => {
               <div className="text-xs font-black text-gray-500 uppercase">Glory Redesign</div>
               <div className="text-primary font-bold text-2xl">99/100</div>
            </div>
-           <p className="text-xs text-gray-500 italic">"Peningkatan dramatis dalam durasi sesi pengguna dan rasio pentalan (bounce rate)."</p>
+           <p className="text-xs text-gray-500 italic">"Durasi sesi pengguna melonjak tajam, sementara angka bounce rate berhasil ditekan seminimal mungkin."</p>
         </div>
       </div>
     </section>

@@ -1,8 +1,5 @@
-
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { generateSEOAudit } from '../services/geminiService';
-import { AuditResult } from '../types';
 
 interface AuditFormProps {
   onSuccess?: () => void;
@@ -27,22 +24,18 @@ const AuditForm: React.FC<AuditFormProps> = ({ onSuccess }) => {
 
     setLoading(true);
     setError(null);
+
     try {
-      const context = `Property Name: ${propertyName}, Owner: ${fullName}, Contact: ${whatsapp}. Target: Dominating Real Estate Market.`;
-      const audit: AuditResult = await generateSEOAudit(url, context);
-
-      if (!audit || !audit.analysis) {
-        throw new Error("Hasil analisis tidak valid.");
-      }
-
+      // Fitur AI dihapus, langsung menyusun data untuk EmailJS
       const templateParams = {
         property: String(propertyName),
         name: String(fullName),
         whatsapp: String(whatsapp),
         website: String(url),
-        audit_score: String(audit.score),
-        analysis: String(audit.analysis),
-        recommendations: audit.recommendations.map((rec, i) => `${i+1}. ${rec}`).join('\n'),
+        // Karena AI dihapus, field score & analysis dikirim string kosong atau info default
+        audit_score: "N/A",
+        analysis: "Permintaan audit manual via form website.",
+        recommendations: "Menunggu review tim teknis.",
         to_email: 'sdkurniawan5@gmail.com'
       };
 
@@ -60,8 +53,8 @@ const AuditForm: React.FC<AuditFormProps> = ({ onSuccess }) => {
       }
 
     } catch (err: any) {
-      console.error("Error during audit/email send:", err);
-      setError("Gagal memproses audit atau mengirim email. Mohon pastikan data yang Anda masukkan benar.");
+      console.error("Error during email send:", err);
+      setError("Gagal mengirim data. Mohon pastikan koneksi internet Anda stabil.");
     } finally {
       setLoading(false);
     }
@@ -177,7 +170,6 @@ const AuditForm: React.FC<AuditFormProps> = ({ onSuccess }) => {
                 )}
               </button>
               
-              {/* Highlighted Policy Sentence */}
               <div className="flex items-center justify-center">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-lg">
                   <span className="material-symbols-outlined text-red-500 text-sm">info</span>
