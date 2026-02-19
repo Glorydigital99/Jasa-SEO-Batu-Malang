@@ -30,6 +30,8 @@ import BrandingStrategyPage from './components/BrandingStrategyPage';
 import AboutPage from './components/AboutPage';
 import PrivacyPage from './components/PrivacyPage';
 import TermsPage from './components/TermsPage';
+// SUNTIKAN 1: Import WhatsApp Button
+import WhatsAppButton from './components/WhatsAppButton';
 
 type Page = 
   | 'home' 
@@ -56,7 +58,6 @@ type Page =
   | 'terms';
 
 const App: React.FC = () => {
-  // --- 1. Fungsi buat deteksi halaman dari URL saat pertama kali load ---
   const getInitialPage = (): Page => {
     const path = window.location.pathname.split('/').pop();
     const validPages: Page[] = [
@@ -72,7 +73,6 @@ const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentPage, setCurrentPage] = useState<Page>(getInitialPage());
 
-  // --- 2. Handle tombol Back & Forward di Browser ---
   useEffect(() => {
     const handlePopState = (event: PopStateEvent) => {
       if (event.state && event.state.page) {
@@ -93,11 +93,9 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // --- 3. Update Title Browser & Scroll ke atas setiap ganti halaman ---
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Auto-Title Logic
     const titles: Record<Page, string> = {
       home: "GLORY DIGITAL | Jasa SEO Batu dan Malang #1 di Indonesia",
       about: "Tentang Kami | Glory Digital Agency Malang",
@@ -105,7 +103,6 @@ const App: React.FC = () => {
       'all-services': "Layanan Digital Marketing Lengkap | Glory Digital",
       'service-web': "Jasa Pembuatan Website SEO Friendly | Glory Digital",
       'audit-improvement': "Audit SEO Gratis & Optimasi Website | Glory Digital",
-      // ... tambahkan yang lain jika perlu
       'design-grafis': "Jasa Desain Grafis Profesional",
       'redesign-web': "Jasa Redesign Website",
       'confirmation': "Konfirmasi Audit - Glory Digital",
@@ -126,10 +123,9 @@ const App: React.FC = () => {
     document.title = titles[currentPage] || "GLORY DIGITAL";
   }, [currentPage]);
 
-  // --- 4. Navigasi yang Update URL Address Bar ---
   const navigateTo = (page: Page) => {
     setCurrentPage(page);
-    const base = '/GLORY-DIGITAL1'; // Sesuaikan dengan repo GitHub lu
+    const base = '/GLORY-DIGITAL1'; 
     const urlPath = page === 'home' ? `${base}/` : `${base}/${page}`;
     window.history.pushState({ page }, '', urlPath);
   };
@@ -191,6 +187,9 @@ const App: React.FC = () => {
       </main>
 
       <Footer onNavigate={navigateTo as any} />
+
+      {/* SUNTIKAN 2: WhatsApp Button Global */}
+      <WhatsAppButton />
 
       {currentPage === 'home' && (
         <div className="fixed bottom-6 left-4 right-4 z-40 md:hidden">
