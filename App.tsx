@@ -99,7 +99,7 @@ const App: React.FC = () => {
 
   const titles: Record<Page, string> = {
     home: "GLORY DIGITAL | Jasa SEO Batu dan Malang #1 di Indonesia",
-    about: "Tentang Kami | Glory Digital Agency Malang",
+    about: "Tentang Kami | Glory Digital SEO Agency Malang",
     'case-study': "Studi Kasus & Portofolio SEO | Glory Digital",
     'all-services': "Layanan Digital Marketing Lengkap | Glory Digital",
     'service-web': "Jasa Pembuatan Website SEO Friendly | Glory Digital",
@@ -124,7 +124,7 @@ const App: React.FC = () => {
 
   const navigateTo = (page: Page) => {
     setCurrentPage(page);
-    const base = '/GLORY-DIGITAL1';
+    const base = '/Jasa-SEO-Batu-Malang';
     const urlPath = page === 'home' ? `${base}/` : `${base}/${page}`;
     window.history.pushState({ page }, '', urlPath);
   };
@@ -140,14 +140,14 @@ const App: React.FC = () => {
             muted 
             loop 
             playsInline 
-            // object-cover mencegah distorsi (peyang)
-            // scale-100 bisa diubah ke 105 atau 110 jika ingin sedikit zoom in
+            
+            
             className="w-full h-full object-cover opacity-80 scale-100"
           >
-            <source src="/GLORY-DIGITAL1/earth.mp4" type="video/mp4" />
+            <source src="/Jasa-SEO-Batu-Malang/earth.mp4" type="video/mp4" />
           </video>
           
-          {/* Layer Mist: Menjaga visual Bromo yang melegenda */}
+          {/* Layer Mist */}
           <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/95 via-background-dark/50 to-transparent"></div>
           <div className="absolute inset-0 bg-background-dark/40"></div>
         </div>
@@ -185,7 +185,7 @@ const App: React.FC = () => {
             </>
           )}
 
-          {/* Rendering Halaman Lain */}
+          {/* Rendering Halaman */}
           {currentPage === 'all-services' && <AllServicesPage onBack={() => navigateTo('home')} onNavigate={navigateTo as any} />}
           {currentPage === 'service-web' && <ServiceWebPage onBack={() => navigateTo('home')} />}
           {currentPage === 'audit-improvement' && <AuditImprovementPage onBack={() => navigateTo('home')} />}

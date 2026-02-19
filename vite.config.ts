@@ -8,5 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: "/GLORY-DIGITAL1/",
+  base: "/Jasa-SEO-Batu-Malang/",
 })

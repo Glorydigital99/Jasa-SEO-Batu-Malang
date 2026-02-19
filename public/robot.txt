@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 
-Sitemap: https://zendigital0.github.io/GLORY-DIGITAL1/sitemap.xml
+Sitemap: https://glorydigital99.github.io/Jasa-SEO-Batu-Malang/sitemap.xml
