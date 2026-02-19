@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="id" class="dark">
   <head>
     <script type="text/javascript">
       (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
+        if (l.search.startsWith('?p=/')) {
+          var decoded = l.search.slice(3).split('&').map(function(s) { 
             return s.replace(/~and~/g, '&')
           }).join('?');
           window.history.replaceState(null, null,
@@ -14,25 +13,24 @@
         }
       }(window.location))
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-686LBKQTSP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-686LBKQTSP');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-686LBKQTSP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-686LBKQTSP');
+    </script>
+
     <meta name="google-site-verification" content="37n6eLKAf2wlTgOj7nWVS0hzK572zYcAM6Og1wMCrL4" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- SEO Primary Tags -->
     <title>GLORY DIGITAL | Jasa SEO Batu dan Malang #1 di Indonesia</title>
     <meta name="description" content="Glory Digital adalah agensi SEO yang berkompeten serta berkomitmen untuk digital growth web anda. Kami membantu bisnis mendominasi pencarian organik melalui audit mendalam dan terstruktur, optimasi teknis, dan strategi konten berbasis data." />
     <meta name="keywords" content="agensi seo, jasa seo batu, jasa seo malang, audit seo gratis, pembuatan website seo, digital marketing agency" />
     <link rel="canonical" href="https://zendigital0.github.io/GLORY-DIGITAL1/" />
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://zendigital0.github.io/GLORY-DIGITAL1/" />
     <meta property="og:title" content="GLORY DIGITAL | Jasa SEO Batu dan Malang #1 di Indonesia" />
@@ -40,74 +38,70 @@
     <meta property="og:description" content="Tingkatkan trafik organik dan ROI bisnis Anda dengan strategi SEO berbasis data dari Glory Digital." />
     <meta property="og:image" content="https://dl.dropboxusercontent.com/scl/fi/krqc32w5www6k808x3lda/GD.jpg?rlkey=6z9pdgihw2p6ru1dhxxbdr2wz&st=a0u6oss8&raw=1" />
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://zendigital0.github.io/GLORY-DIGITAL1/" />
     <meta property="twitter:title" content="GLORY DIGITAL | Jasa SEO Batu dan Malang #1 di Indonesia" />
     <meta property="twitter:description" content="Glory Digital adalah agensi SEO yang berkompeten serta berkomitmen untuk digital growth web anda." />
     <meta property="twitter:image" content="https://dl.dropboxusercontent.com/scl/fi/krqc32w5www6k808x3lda/GD.jpg?rlkey=6z9pdgihw2p6ru1dhxxbdr2wz&st=a0u6oss8&raw=1" />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://dl.dropboxusercontent.com/scl/fi/5dtldogxi3l8fkpguyp04/gd.png?rlkey=4hsa827kuoxcb2uhkecq3b4ow&st=fyeo70jb&raw=1" />
 
-    <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Glory Digital Agency",
-  "image": "https://dl.dropboxusercontent.com/scl/fi/krqc32w5www6k808x3lda/GD.jpg?rlkey=6z9pdgihw2p6ru1dhxxbdr2wz&st=a0u6oss8&raw=1",
-  "@id": "https://zendigital0.github.io/GLORY-DIGITAL1/",
-  "url": "https://zendigital0.github.io/GLORY-DIGITAL1/",
-  "telephone": "+6285177470073",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "JL. Imam Bonjol No. 2",
-    "addressLocality": "Batu",
-    "addressRegion": "Jawa Timur",
-    "postalCode": "65333",
-    "addressCountry": "ID"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": -7.8711,
-    "longitude": 112.5268
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "12",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Budi Santoso"
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Glory Digital Agency",
+      "image": "https://dl.dropboxusercontent.com/scl/fi/krqc32w5www6k808x3lda/GD.jpg?rlkey=6z9pdgihw2p6ru1dhxxbdr2wz&st=a0u6oss8&raw=1",
+      "@id": "https://zendigital0.github.io/GLORY-DIGITAL1/",
+      "url": "https://zendigital0.github.io/GLORY-DIGITAL1/",
+      "telephone": "+6285177470073",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "JL. Imam Bonjol No. 2",
+        "addressLocality": "Batu",
+        "addressRegion": "Jawa Timur",
+        "postalCode": "65333",
+        "addressCountry": "ID"
       },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5"
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -7.8711,
+        "longitude": 112.5268
       },
-      "reviewBody": "Jasa SEO terbaik di Malang. Trafik organik naik drastis dalam 3 bulan!"
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "12",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Budi Santoso"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Jasa SEO terbaik di Malang. Trafik organik naik drastis dalam 3 bulan!"
+        }
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/glorydigital"
+      ]
     }
-  ],
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    "opens": "09:00",
-    "closes": "18:00"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/company/glorydigital"
-  ]
-}
     </script>
 
-    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://dl.dropboxusercontent.com" />
@@ -127,24 +121,23 @@
         scrollbar-width: none;
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
-    "recharts": "https://esm.sh/recharts@^3.7.0",
-    "@emailjs/browser": "https://esm.sh/@emailjs/browser@^4.4.1",
-    "vite": "https://esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
-  }
-}
-</script>
-</head>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.4",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+        "recharts": "https://esm.sh/recharts@^3.7.0",
+        "@emailjs/browser": "https://esm.sh/@emailjs/browser@^4.4.1",
+        "vite": "https://esm.sh/vite@^7.3.1",
+        "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
+      }
+    }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
-    <!-- Vite entry point -->
     <script type="module" src="index.tsx"></script>
   </body>
 </html>
