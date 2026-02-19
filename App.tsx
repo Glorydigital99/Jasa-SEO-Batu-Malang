@@ -82,7 +82,11 @@ const App: React.FC = () => {
       <main className="max-w-7xl mx-auto pt-20 pb-32">
         {currentPage === 'home' && (
           <>
+          <section className="sr-only"> 
+        <h1>Jasa SEO Batu & Malang Terbaik - Glory Digital Agency</h1>
+      </section>
             <Hero />
+            
             <div className="space-y-24 px-4 md:px-8">
               <Stats />
               <SuccessShowcase />
