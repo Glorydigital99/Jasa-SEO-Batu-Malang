@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// ... (Import component lain tetap sama)
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
@@ -58,7 +57,6 @@ type Page =
   | 'terms';
 
 const App: React.FC = () => {
-  // --- 1. Fungsi deteksi halaman dari URL ---
   const getInitialPage = (): Page => {
     const path = window.location.pathname.split('/').pop();
     const validPages: Page[] = [
@@ -74,7 +72,6 @@ const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentPage, setCurrentPage] = useState<Page>(getInitialPage());
 
-  // --- 2. Browser History Handling ---
   useEffect(() => {
     const handlePopState = (event: PopStateEvent) => {
       if (event.state && event.state.page) {
@@ -95,40 +92,39 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // --- 3. Dynamic Title & Scroll Reset ---
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    const titles: Record<Page, string> = {
-      home: "GLORY DIGITAL | Jasa SEO Batu dan Malang #1 di Indonesia",
-      about: "Tentang Kami | Glory Digital Agency Malang",
-      'case-study': "Studi Kasus & Portofolio SEO | Glory Digital",
-      'all-services': "Layanan Digital Marketing Lengkap | Glory Digital",
-      'service-web': "Jasa Pembuatan Website SEO Friendly | Glory Digital",
-      'audit-improvement': "Audit SEO Gratis & Optimasi Website | Glory Digital",
-      'design-grafis': "Jasa Desain Grafis Profesional",
-      'redesign-web': "Jasa Redesign Website",
-      'confirmation': "Konfirmasi Audit - Glory Digital",
-      'case-emerald': "Emerald Park Case Study",
-      'case-techflow': "TechFlow Case Study",
-      'case-urban': "Urban Living Case Study",
-      'case-luxe': "Luxe Travel Case Study",
-      'case-health': "HealthLink Case Study",
-      'case-eco': "EcoStore Case Study",
-      'process': "Alur Kerja Kami - Glory Digital",
-      'google-ads': "Jasa Google Ads",
-      'content-writing': "Jasa Penulisan Artikel SEO",
-      'social-media': "Jasa Kelola Media Sosial",
-      'branding': "Strategi Branding Bisnis",
-      'privacy': "Kebijakan Privasi - Glory Digital",
-      'terms': "Syarat & Ketentuan - Glory Digital"
-    };
     document.title = titles[currentPage] || "GLORY DIGITAL";
   }, [currentPage]);
 
+  const titles: Record<Page, string> = {
+    home: "GLORY DIGITAL | Jasa SEO Batu dan Malang #1 di Indonesia",
+    about: "Tentang Kami | Glory Digital Agency Malang",
+    'case-study': "Studi Kasus & Portofolio SEO | Glory Digital",
+    'all-services': "Layanan Digital Marketing Lengkap | Glory Digital",
+    'service-web': "Jasa Pembuatan Website SEO Friendly | Glory Digital",
+    'audit-improvement': "Audit SEO Gratis & Optimasi Website | Glory Digital",
+    'design-grafis': "Jasa Desain Grafis Profesional",
+    'redesign-web': "Jasa Redesign Website",
+    'confirmation': "Konfirmasi Audit - Glory Digital",
+    'case-emerald': "Emerald Park Case Study",
+    'case-techflow': "TechFlow Case Study",
+    'case-urban': "Urban Living Case Study",
+    'case-luxe': "Luxe Travel Case Study",
+    'case-health': "HealthLink Case Study",
+    'case-eco': "EcoStore Case Study",
+    'process': "Alur Kerja Kami - Glory Digital",
+    'google-ads': "Jasa Google Ads",
+    'content-writing': "Jasa Penulisan Artikel SEO",
+    'social-media': "Jasa Kelola Media Sosial",
+    'branding': "Strategi Branding Bisnis",
+    'privacy': "Kebijakan Privasi - Glory Digital",
+    'terms': "Syarat & Ketentuan - Glory Digital"
+  };
+
   const navigateTo = (page: Page) => {
     setCurrentPage(page);
-    const base = '/GLORY-DIGITAL1'; 
+    const base = '/GLORY-DIGITAL1';
     const urlPath = page === 'home' ? `${base}/` : `${base}/${page}`;
     window.history.pushState({ page }, '', urlPath);
   };
@@ -136,26 +132,28 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-background-dark text-white font-sans selection:bg-primary/30 relative overflow-hidden">
       
-      {/* --- SUNTIKAN BACKGROUND BROMO MIST (KHUSUS HOME) --- */}
+      {/* --- LAYER 0: VIDEO BACKGROUND (OPTIMIZED SCALING) --- */}
       {currentPage === 'home' && (
-        <div className="absolute top-0 left-0 w-full h-[130vh] z-0 pointer-events-none">
-          {/* Background Image: Relevan dengan SEO & Digital Growth */}
-          <img 
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2072" 
-            alt="SEO Data Connectivity" 
-            // UPDATE: Opacity dinaikkan jadi 80% biar makin kelihatan
-            className="w-full h-full object-cover opacity-80" 
-          />
+        <div className="absolute top-0 left-0 w-full h-[140vh] z-0 pointer-events-none">
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            // object-cover mencegah distorsi (peyang)
+            // scale-100 bisa diubah ke 105 atau 110 jika ingin sedikit zoom in
+            className="w-full h-full object-cover opacity-80 scale-100"
+          >
+            <source src="/GLORY-DIGITAL1/earth.mp4" type="video/mp4" />
+          </video>
           
-          {/* Layer Mist: Gradasi dari Solid (bawah) ke Transparan (atas) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/90 via-background-dark/40 to-transparent"></div>
-          
-          {/* UPDATE: Overlay Gelap sedikit ditebalkan (30%) buat jaga kontras teks */}
-          <div className="absolute inset-0 bg-background-dark/30"></div>
+          {/* Layer Mist: Menjaga visual Bromo yang melegenda */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/95 via-background-dark/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-background-dark/40"></div>
         </div>
       )}
 
-      {/* Konten Utama (z-10 agar di atas background) */}
+      {/* Konten Utama */}
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar isScrolled={isScrolled} onNavigate={navigateTo as any} />
         
@@ -187,7 +185,7 @@ const App: React.FC = () => {
             </>
           )}
 
-          {/* --- Rendering Halaman Lain --- */}
+          {/* Rendering Halaman Lain */}
           {currentPage === 'all-services' && <AllServicesPage onBack={() => navigateTo('home')} onNavigate={navigateTo as any} />}
           {currentPage === 'service-web' && <ServiceWebPage onBack={() => navigateTo('home')} />}
           {currentPage === 'audit-improvement' && <AuditImprovementPage onBack={() => navigateTo('home')} />}
@@ -214,7 +212,6 @@ const App: React.FC = () => {
         <Footer onNavigate={navigateTo as any} />
       </div>
 
-      {/* Global Conversion Tools */}
       <WhatsAppButton />
 
       {currentPage === 'home' && (
@@ -223,7 +220,7 @@ const App: React.FC = () => {
             onClick={() => {
               document.getElementById('audit-section')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="w-full h-14 rounded-2xl bg-white text-background-dark font-black text-lg shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center justify-between px-6 active:scale-95 transition-all"
+            className="w-full h-14 rounded-2xl bg-white text-background-dark font-black text-lg shadow-2xl flex items-center justify-between px-6 active:scale-95 transition-all"
           >
             <span>Mulai Audit Gratis</span>
             <span className="material-symbols-outlined text-sm">arrow_forward</span>
