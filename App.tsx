@@ -132,28 +132,17 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-background-dark text-white font-sans selection:bg-primary/30 relative overflow-hidden">
       
-      {/* --- LAYER 0: VIDEO BACKGROUND (OPTIMIZED SCALING) --- */}
+      {/* --- LAYER 0: VIDEO BACKGROUND --- */}
       {currentPage === 'home' && (
         <div className="absolute top-0 left-0 w-full h-[140vh] z-0 pointer-events-none">
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline 
-            
-            
-            className="w-full h-full object-cover opacity-80 scale-100"
-          >
+          <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-80 scale-100">
             <source src="/Jasa-SEO-Batu-Malang/earth.mp4" type="video/mp4" />
           </video>
-          
-          {/* Layer Mist */}
           <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/95 via-background-dark/50 to-transparent"></div>
           <div className="absolute inset-0 bg-background-dark/40"></div>
         </div>
       )}
 
-      {/* Konten Utama */}
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar isScrolled={isScrolled} onNavigate={navigateTo as any} />
         
@@ -169,13 +158,56 @@ const App: React.FC = () => {
                 <Stats />
                 <SuccessShowcase />
                 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                  <div className="lg:col-span-7 min-h-[500px]">
-                    <GrowthChart />
+                {/* --- GRID SECTION: AUTHORITY HIGHLIGHT --- */}
+                <div className="space-y-16">
+                  
+                  {/* BOX 1: LAYANAN (CLEAN & CENTERED HEADLINE) */}
+                  <div className="relative group">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-primary/10 via-primary/30 to-primary/10 rounded-[2.5rem] blur-2xl opacity-75 group-hover:opacity-100 animate-pulse transition duration-1000"></div>
+                    
+                    <div className="relative bg-background-dark/80 backdrop-blur-xl rounded-[2.2rem] border-2 border-primary/20 p-10 lg:p-16 shadow-[0_0_50px_-12px_rgba(0,255,128,0.2)]">
+                      
+                      {/* HEADER CLEAN (Teks "Layanan Kami" Dihapus Total) */}
+                      <div className="mb-16 flex flex-col items-center text-center max-w-4xl mx-auto">
+                        <div className="mb-6 flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10">
+                          <span className="h-2 w-2 rounded-full bg-primary animate-ping"></span>
+                          <span className="text-[10px] font-black tracking-[0.3em] uppercase opacity-70">Sistem Pertumbuhan Aktif</span>
+                        </div>
+                        
+                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter leading-tight uppercase mb-8 italic">
+                          Strategi <span className="text-primary underline decoration-wavy underline-offset-[12px]">Eksklusif</span> Untuk Dominasi Digital yang Tak Terhentikan
+                        </h2>
+                        
+                        <p className="text-base md:text-lg text-white/60 leading-relaxed font-medium">
+                          Kami tidak sekadar menawarkan jasa; kami memberikan ekosistem pertumbuhan yang dirancang secara presisi menggunakan data analitik mendalam. Setiap langkah optimasi yang kami ambil bertujuan untuk memastikan bisnis Anda tidak hanya bertahan, tetapi memimpin pasar melalui visibilitas organik yang stabil dan berkelanjutan di mesin pencari.
+                        </p>
+                      </div>
+                      
+                      <Services onNavigate={navigateTo as any} />
+                    </div>
                   </div>
-                  <div className="lg:col-span-5">
-                    <Services onNavigate={navigateTo as any} />
+
+                  {/* BOX 2: GRAFIK (BAWAH) */}
+                  <div className="w-full">
+                    <div className="bg-white/5 rounded-[2.2rem] border border-white/10 p-8 lg:p-12 shadow-2xl relative overflow-hidden group">
+                      <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-15 transition-opacity">
+                        <span className="material-symbols-outlined text-8xl">insights</span>
+                      </div>
+                      
+                      <div className="relative z-10">
+                        <div className="mb-8">
+                          <h3 className="text-xl font-bold opacity-90 flex items-center gap-3">
+                            <span className="material-symbols-outlined text-primary">bar_chart</span>
+                            Lintasan Pertumbuhan Klien
+                          </h3>
+                        </div>
+                        <div className="min-h-[450px]">
+                          <GrowthChart />
+                        </div>
+                      </div>
+                    </div>
                   </div>
+
                 </div>
 
                 <DetailedServices />
@@ -185,7 +217,7 @@ const App: React.FC = () => {
             </>
           )}
 
-          {/* Rendering Halaman */}
+          {/* Rendering Halaman Lain */}
           {currentPage === 'all-services' && <AllServicesPage onBack={() => navigateTo('home')} onNavigate={navigateTo as any} />}
           {currentPage === 'service-web' && <ServiceWebPage onBack={() => navigateTo('home')} />}
           {currentPage === 'audit-improvement' && <AuditImprovementPage onBack={() => navigateTo('home')} />}
@@ -217,9 +249,7 @@ const App: React.FC = () => {
       {currentPage === 'home' && (
         <div className="fixed bottom-6 left-4 right-4 z-40 md:hidden">
           <button 
-            onClick={() => {
-              document.getElementById('audit-section')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() => document.getElementById('audit-section')?.scrollIntoView({ behavior: 'smooth' })}
             className="w-full h-14 rounded-2xl bg-white text-background-dark font-black text-lg shadow-2xl flex items-center justify-between px-6 active:scale-95 transition-all"
           >
             <span>Mulai Audit Gratis</span>

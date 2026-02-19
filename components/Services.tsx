@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface ServicesProps {
@@ -9,7 +8,7 @@ const services = [
   {
     id: 'service-web',
     title: 'Pembuatan Website',
-    description: 'Kami membangun website berperforma tinggi, SEO-friendly, dan berorientasi konversi.',
+    description: 'Kami membangun website berperforma tinggi, SEO-friendly, and berorientasi konversi.',
     icon: 'web'
   },
   {
@@ -21,7 +20,7 @@ const services = [
   {
     id: 'redesign-web',
     title: 'Design Ulang Website',
-    description: 'Transformasikan website lama Anda menjadi modern, cepat, dan lebih menjual.',
+    description: 'Transformasikan website lama Anda menjadi modern, cepat, and lebih menjual.',
     icon: 'history_edu'
   },
   {
@@ -34,13 +33,9 @@ const services = [
 
 const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
   return (
-    <div className="space-y-6">
-      <div className="mb-8">
-        <h2 className="text-3xl font-black text-white mb-2 tracking-tight">Layanan Kami</h2>
-        <p className="text-gray-400 text-sm">Strategi digital menyeluruh untuk akselerasi bisnis Anda.</p>
-      </div>
-
-      <div className="flex flex-col gap-3">
+    <div className="flex flex-col items-center w-full">
+      {/* --- GRID 2 KOLOM UNTUK SIMETRISI --- */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
         {services.map((service) => (
           <div 
             key={service.id} 
@@ -49,26 +44,33 @@ const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
                 onNavigate(service.id as any);
               }
             }}
-            className="group flex gap-4 p-5 rounded-3xl bg-surface-dark border border-white/5 hover:border-primary/30 hover:bg-surface-dark/80 transition-all duration-300 cursor-pointer"
+            className="group flex flex-col items-center text-center p-8 rounded-[2.5rem] bg-surface-dark border border-white/5 hover:border-primary/40 hover:bg-surface-dark/90 transition-all duration-500 cursor-pointer shadow-xl hover:shadow-primary/10"
           >
-            <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-2xl bg-background-dark text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
-              <span className="material-symbols-outlined text-xl">{service.icon}</span>
+            {/* Ikon di Tengah Atas */}
+            <div className="mb-6 flex items-center justify-center w-16 h-16 rounded-2xl bg-background-dark text-primary group-hover:bg-primary group-hover:text-background-dark transition-all duration-500 transform group-hover:rotate-12">
+              <span className="material-symbols-outlined text-3xl">{service.icon}</span>
             </div>
-            <div className="flex flex-col gap-0.5">
-              <h3 className="text-base font-bold text-white group-hover:text-primary transition-colors">{service.title}</h3>
-              <p className="text-[11px] text-gray-500 leading-tight">{service.description}</p>
+            
+            <div className="flex flex-col gap-3">
+              <h3 className="text-xl font-extrabold text-white group-hover:text-primary transition-colors tracking-tight">
+                {service.title}
+              </h3>
+              <p className="text-sm text-gray-500 leading-relaxed max-w-[250px]">
+                {service.description}
+              </p>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="pt-4">
+      {/* Tombol Lihat Detail di Tengah */}
+      <div className="mt-12">
         <button 
           onClick={() => onNavigate && onNavigate('all-services')}
-          className="flex items-center gap-2 text-primary font-black text-xs hover:translate-x-2 transition-transform uppercase tracking-widest"
+          className="group flex items-center gap-3 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-primary font-black text-xs hover:bg-primary hover:text-background-dark transition-all duration-300 uppercase tracking-[0.3em]"
         >
-          <span>Lihat Detail Layanan</span>
-          <span className="material-symbols-outlined text-sm">arrow_right_alt</span>
+          <span>Eksplorasi Semua Layanan</span>
+          <span className="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
         </button>
       </div>
     </div>
