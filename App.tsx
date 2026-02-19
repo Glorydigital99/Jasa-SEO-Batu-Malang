@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// ... (Import component lain tetap sama)
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
@@ -30,7 +31,6 @@ import BrandingStrategyPage from './components/BrandingStrategyPage';
 import AboutPage from './components/AboutPage';
 import PrivacyPage from './components/PrivacyPage';
 import TermsPage from './components/TermsPage';
-// SUNTIKAN 1: Import WhatsApp Button
 import WhatsAppButton from './components/WhatsAppButton';
 
 type Page = 
@@ -58,6 +58,7 @@ type Page =
   | 'terms';
 
 const App: React.FC = () => {
+  // --- 1. Fungsi deteksi halaman dari URL ---
   const getInitialPage = (): Page => {
     const path = window.location.pathname.split('/').pop();
     const validPages: Page[] = [
@@ -73,6 +74,7 @@ const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentPage, setCurrentPage] = useState<Page>(getInitialPage());
 
+  // --- 2. Browser History Handling ---
   useEffect(() => {
     const handlePopState = (event: PopStateEvent) => {
       if (event.state && event.state.page) {
@@ -93,6 +95,7 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // --- 3. Dynamic Title & Scroll Reset ---
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -131,64 +134,87 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background-dark text-white font-sans selection:bg-primary/30">
-      <Navbar isScrolled={isScrolled} onNavigate={navigateTo as any} />
+    <div className="min-h-screen bg-background-dark text-white font-sans selection:bg-primary/30 relative overflow-hidden">
       
-      <main className="max-w-7xl mx-auto pt-20 pb-32">
-        {currentPage === 'home' && (
-          <>
-          <section className="sr-only"> 
-            <h1>Jasa SEO Batu & Malang Terbaik - Glory Digital Agency</h1>
-          </section>
-            <Hero />
-            
-            <div className="space-y-24 px-4 md:px-8">
-              <Stats />
-              <SuccessShowcase />
+      {/* --- SUNTIKAN BACKGROUND BROMO MIST (KHUSUS HOME) --- */}
+      {currentPage === 'home' && (
+        <div className="absolute top-0 left-0 w-full h-[130vh] z-0 pointer-events-none">
+          {/* Background Image: Relevan dengan SEO & Digital Growth */}
+          <img 
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2072" 
+            alt="SEO Data Connectivity" 
+            // UPDATE: Opacity dinaikkan jadi 80% biar makin kelihatan
+            className="w-full h-full object-cover opacity-80" 
+          />
+          
+          {/* Layer Mist: Gradasi dari Solid (bawah) ke Transparan (atas) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/90 via-background-dark/40 to-transparent"></div>
+          
+          {/* UPDATE: Overlay Gelap sedikit ditebalkan (30%) buat jaga kontras teks */}
+          <div className="absolute inset-0 bg-background-dark/30"></div>
+        </div>
+      )}
+
+      {/* Konten Utama (z-10 agar di atas background) */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Navbar isScrolled={isScrolled} onNavigate={navigateTo as any} />
+        
+        <main className="max-w-7xl mx-auto pt-20 pb-32">
+          {currentPage === 'home' && (
+            <>
+              <section className="sr-only"> 
+                <h1>Jasa SEO Batu & Malang Terbaik - Glory Digital Agency</h1>
+              </section>
+              <Hero />
               
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                <div className="lg:col-span-7 min-h-[500px]">
-                  <GrowthChart />
+              <div className="space-y-24 px-4 md:px-8">
+                <Stats />
+                <SuccessShowcase />
+                
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                  <div className="lg:col-span-7 min-h-[500px]">
+                    <GrowthChart />
+                  </div>
+                  <div className="lg:col-span-5">
+                    <Services onNavigate={navigateTo as any} />
+                  </div>
                 </div>
-                <div className="lg:col-span-5">
-                  <Services onNavigate={navigateTo as any} />
-                </div>
+
+                <DetailedServices />
+                <AuditForm onSuccess={() => navigateTo('confirmation')} />
+                <Testimonials />
               </div>
+            </>
+          )}
 
-              <DetailedServices />
-              <AuditForm onSuccess={() => navigateTo('confirmation')} />
-              <Testimonials />
-            </div>
-          </>
-        )}
+          {/* --- Rendering Halaman Lain --- */}
+          {currentPage === 'all-services' && <AllServicesPage onBack={() => navigateTo('home')} onNavigate={navigateTo as any} />}
+          {currentPage === 'service-web' && <ServiceWebPage onBack={() => navigateTo('home')} />}
+          {currentPage === 'audit-improvement' && <AuditImprovementPage onBack={() => navigateTo('home')} />}
+          {currentPage === 'design-grafis' && <GraphicDesignPage onBack={() => navigateTo('home')} />}
+          {currentPage === 'redesign-web' && <RedesignWebPage onBack={() => navigateTo('home')} />}
+          {currentPage === 'google-ads' && <GoogleAdsPage onBack={() => navigateTo('all-services')} />}
+          {currentPage === 'content-writing' && <ContentWritingPage onBack={() => navigateTo('all-services')} />}
+          {currentPage === 'social-media' && <SocialMediaPage onBack={() => navigateTo('all-services')} />}
+          {currentPage === 'branding' && <BrandingStrategyPage onBack={() => navigateTo('all-services')} />}
+          {currentPage === 'confirmation' && <ConfirmationPage onBack={() => navigateTo('home')} />}
+          {currentPage === 'case-study' && <CaseStudyPage onBack={() => navigateTo('home')} onSelectCase={(id) => navigateTo(id as Page)} />}
+          {currentPage === 'case-emerald' && <CaseStudyEmeraldPage onBack={() => navigateTo('case-study')} />}
+          {currentPage === 'case-techflow' && <CaseStudyTechFlowPage onBack={() => navigateTo('case-study')} />}
+          {currentPage === 'case-urban' && <CaseStudyUrbanPage onBack={() => navigateTo('case-study')} />}
+          {currentPage === 'case-luxe' && <CaseStudyLuxePage onBack={() => navigateTo('case-study')} />}
+          {currentPage === 'case-health' && <CaseStudyHealthPage onBack={() => navigateTo('case-study')} />}
+          {currentPage === 'case-eco' && <CaseStudyEcoPage onBack={() => navigateTo('case-study')} />}
+          {currentPage === 'process' && <ProcessPage onBack={() => navigateTo('home')} />}
+          {currentPage === 'about' && <AboutPage onBack={() => navigateTo('home')} />}
+          {currentPage === 'privacy' && <PrivacyPage onBack={() => navigateTo('home')} />}
+          {currentPage === 'terms' && <TermsPage onBack={() => navigateTo('home')} />}
+        </main>
 
-        {/* --- Rendering Halaman Lain --- */}
-        {currentPage === 'all-services' && <AllServicesPage onBack={() => navigateTo('home')} onNavigate={navigateTo as any} />}
-        {currentPage === 'service-web' && <ServiceWebPage onBack={() => navigateTo('home')} />}
-        {currentPage === 'audit-improvement' && <AuditImprovementPage onBack={() => navigateTo('home')} />}
-        {currentPage === 'design-grafis' && <GraphicDesignPage onBack={() => navigateTo('home')} />}
-        {currentPage === 'redesign-web' && <RedesignWebPage onBack={() => navigateTo('home')} />}
-        {currentPage === 'google-ads' && <GoogleAdsPage onBack={() => navigateTo('all-services')} />}
-        {currentPage === 'content-writing' && <ContentWritingPage onBack={() => navigateTo('all-services')} />}
-        {currentPage === 'social-media' && <SocialMediaPage onBack={() => navigateTo('all-services')} />}
-        {currentPage === 'branding' && <BrandingStrategyPage onBack={() => navigateTo('all-services')} />}
-        {currentPage === 'confirmation' && <ConfirmationPage onBack={() => navigateTo('home')} />}
-        {currentPage === 'case-study' && <CaseStudyPage onBack={() => navigateTo('home')} onSelectCase={(id) => navigateTo(id as Page)} />}
-        {currentPage === 'case-emerald' && <CaseStudyEmeraldPage onBack={() => navigateTo('case-study')} />}
-        {currentPage === 'case-techflow' && <CaseStudyTechFlowPage onBack={() => navigateTo('case-study')} />}
-        {currentPage === 'case-urban' && <CaseStudyUrbanPage onBack={() => navigateTo('case-study')} />}
-        {currentPage === 'case-luxe' && <CaseStudyLuxePage onBack={() => navigateTo('case-study')} />}
-        {currentPage === 'case-health' && <CaseStudyHealthPage onBack={() => navigateTo('case-study')} />}
-        {currentPage === 'case-eco' && <CaseStudyEcoPage onBack={() => navigateTo('case-study')} />}
-        {currentPage === 'process' && <ProcessPage onBack={() => navigateTo('home')} />}
-        {currentPage === 'about' && <AboutPage onBack={() => navigateTo('home')} />}
-        {currentPage === 'privacy' && <PrivacyPage onBack={() => navigateTo('home')} />}
-        {currentPage === 'terms' && <TermsPage onBack={() => navigateTo('home')} />}
-      </main>
+        <Footer onNavigate={navigateTo as any} />
+      </div>
 
-      <Footer onNavigate={navigateTo as any} />
-
-      {/* SUNTIKAN 2: WhatsApp Button Global */}
+      {/* Global Conversion Tools */}
       <WhatsAppButton />
 
       {currentPage === 'home' && (
